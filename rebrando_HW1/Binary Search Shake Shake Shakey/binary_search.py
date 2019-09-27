@@ -69,7 +69,6 @@ def max_candy(array, boxes, students, middle):
     i = boxes - 1
     while i in range(0, boxes):
         sum = math.floor(sum + (int(array[i])/int(array[middle])))
-        # print(array[i] + " -> " + array[i] + "/" + array[middle] + " = " + str(math.floor(int(array[i])/int(array[middle]))))
         i = i - 1
     if sum == students:
         return array[middle]
@@ -85,29 +84,17 @@ def binary_search(array, start, end, boxes, students, absoluteMaxCandy=0):
         middle =int((start + end)/2)
 
         maxCandy = max_candy(array, boxes, students, middle)
-        # print(str(maxCandy) + " > " + str(absoluteMaxCandy) + "=" + str(int(maxCandy) > int(absoluteMaxCandy)))
         if int(maxCandy) > absoluteMaxCandy:
             absoluteMaxCandy = maxCandy
             print(absoluteMaxCandy)
 
-        # ## Check if the midpoint is the item we are looking for
-        # if searchFor == int(array[middle]):
-        #     return middle
-
-
         ## Else see if the element is smaller than the midpoint
         absoluteMaxCandy = binary_search(array, start, middle - 1, boxes, students, absoluteMaxCandy)
         absoluteMaxCandy = binary_search(array, middle + 1, end, boxes, students, absoluteMaxCandy)
-        return absoluteMaxCandy
+    return absoluteMaxCandy
 
 
 
-        # return maxCandy
-        ## If the midpoint item is greate than, search the right side of the list
-        # elif searchFor > int(array[middle]):
-    #
-    # else:
-    #     return False
 
 ###################
 #- Find Answer -#
@@ -128,7 +115,6 @@ def main():
     for i in range(0,int(numTestCases)):
             ## Get Input returns the inputs
             boxes, students, boxContents = get_input()
-            # find_answer(4, 1, "3 2 3 4")
             sorted.append(find_answer(int(boxes), int(students), boxContents))
     print_results(sorted)
 
